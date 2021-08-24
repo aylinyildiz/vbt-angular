@@ -1,3 +1,4 @@
+import { CartService } from './../cart/services/cart-service';
 import { ProductService } from './services/product.service';
 import { Component, OnInit } from '@angular/core';
 import { Product } from './models/product';
@@ -12,7 +13,10 @@ export class ProductComponent implements OnInit {
   products: Array<Product> = new Array<Product>();
   addedProduct: string = '';
 
-  constructor(private productService: ProductService) {}
+  constructor(
+    private productService: ProductService,
+    private cartService: CartService
+  ) {}
 
   //ngOnInit --- sayfaya ilk girdiğimizde çağıracağımız işler için yarar
   ngOnInit(): void {
@@ -27,5 +31,6 @@ export class ProductComponent implements OnInit {
 
   addToCart(product: Product) {
     this.addedProduct = product.ProductName;
+    this.cartService.addToCart(product);
   }
 }

@@ -1,0 +1,17 @@
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+
+    <!-- [class.dropdown-toggle]="totalCartItem > 0" -->
+
+    Sepetim <span *ngIf="totalCartItem > 0"> : {{totalCartItemPrice}} ({{totalCartItem}}) </span>
+  </a>
+  <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+      <li *ngIf="cartItems.length === 0 ">
+        <a class="dropdown-item disabled">Sepet Boş</a>
+      </li>
+    <li *ngFor="let item of cartItems">
+        <a class="dropdown-item" href="#">
+            {{item.Product.ProductName}} - ({{item.Quantity}})
+        </a>
+    </li>
+   
+  </ul>
