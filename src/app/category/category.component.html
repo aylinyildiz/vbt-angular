@@ -5,9 +5,17 @@
 </div>
 
 <ul class="list-group">
+    <li  class="list-group-item"
+    (click) = "onSelect()"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]={exact:true}
+    routerLink="products"
+    style="cursor: pointer;">
+    Hepsi
+    </li>
     <li *ngFor="let category of categories"
         class="list-group-item"
-        (click) = "onSelect"
+        (click) = "onSelect(category)"
         routerLinkActive="active"
         routerLink="products/{{category.CategoryId}}" style="cursor: pointer;">
         {{category.CategoryName}}

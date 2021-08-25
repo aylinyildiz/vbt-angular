@@ -1,6 +1,7 @@
 import { ProductComponent } from './product/product.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CartComponent } from './cart/cart.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,10 @@ const routes: Routes = [
   {
     path: 'products/:categoryId',
     component: ProductComponent,
+  },
+  {
+    path: 'my-cart',
+    component: CartComponent,
   },
 ];
 

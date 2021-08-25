@@ -24,7 +24,8 @@ export class CategoryComponent implements OnInit {
     });
   }
 
-  onSelect(category: Category) {
+  // caterory?: olmasının nedeni boşta gelebilir demek
+  onSelect(category?: Category) {
     if (category) {
       this.selectCategory = category;
     } else {
