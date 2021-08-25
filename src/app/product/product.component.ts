@@ -2,6 +2,7 @@ import { CartService } from './../cart/services/cart-service';
 import { ProductService } from './services/product.service';
 import { Component, OnInit } from '@angular/core';
 import { Product } from './models/product';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-product',
@@ -16,16 +17,20 @@ export class ProductComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private cartService: CartService
+    private cartService: CartService,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   //ngOnInit --- sayfaya ilk girdiğimizde çağıracağımız işler için yarar
   ngOnInit(): void {
-    this.getProduct();
+    // this.getProduct();
+    this.activatedRoute.params.subscribe((params) => {
+      this.getProduct(params['categoryId']);
+    });
   }
 
-  getProduct() {
-    this.productService.getProduct().subscribe((response) => {
+  getProduct(categoryId: number) {
+    this.productService.getProduct(categoryId).subscribe((response) => {
       this.products = response;
     });
   }

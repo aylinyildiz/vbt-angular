@@ -5,7 +5,11 @@
 </div>
 
 <ul class="list-group">
-    <li class="list-group-item" *ngFor="let category of categories">
+    <li *ngFor="let category of categories"
+        class="list-group-item"
+        (click) = "onSelect"
+        routerLinkActive="active"
+        routerLink="products/{{category.CategoryId}}" style="cursor: pointer;">
         {{category.CategoryName}}
     </li>
 </ul>

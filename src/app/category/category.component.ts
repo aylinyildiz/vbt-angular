@@ -10,6 +10,7 @@ import { Category } from './models/category';
 })
 export class CategoryComponent implements OnInit {
   categories: Array<Category> = new Array<Category>();
+  selectCategory: Category = new Category();
 
   constructor(private categoryService: CategoryService) {}
 
@@ -21,5 +22,13 @@ export class CategoryComponent implements OnInit {
     this.categoryService.getCategories().subscribe((response) => {
       this.categories = response;
     });
+  }
+
+  onSelect(category: Category) {
+    if (category) {
+      this.selectCategory = category;
+    } else {
+      this.selectCategory = new Category();
+    }
   }
 }
