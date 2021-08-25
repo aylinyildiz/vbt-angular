@@ -2,7 +2,8 @@
 
     <!-- [class.dropdown-toggle]="totalCartItem > 0" -->
 
-    Sepetim <span *ngIf="totalCartItem > 0"> : {{totalCartItemPrice}} ({{totalCartItem}}) </span>
+     <!-- | dik çizgi pipe simgesidir. para olduğunu belirmek için aşağıda totalCartItemPrice yanında kullanıldı -->
+    Sepetim <span *ngIf="totalCartItem > 0"> : {{totalCartItemPrice | currency: ' ₺'}} ({{totalCartItem}}) </span>
   </a>
   <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
       <li *ngIf="cartItems.length === 0 ">
@@ -10,7 +11,8 @@
       </li>
     <li *ngFor="let item of cartItems">
         <a class="dropdown-item" href="#">
-            {{item.Product.ProductName}} - ({{item.Quantity}})
+          <!-- büyük harfle yazması için pipe kullanıldı  -->
+            {{item.Product.ProductName | uppercase}} - ({{item.Quantity}})
         </a>
     </li>
    

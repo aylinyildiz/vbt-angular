@@ -8,16 +8,29 @@
     {{addedProduct}} ürünü sepete eklendi
 </div>
 
+<div class="col">
+    <input class="form-control" type="text" placeholder="Arama yapın" [(ngModel)] ="filterText">
+</div>
+
+<div class="col" *ngIf="filterText">
+    <b>{{filterText}}</b> için arama yaptınız.
+</div>
+
 
 <div class="col mt-3">
     <ul class="list-group">
-        <li class="list-group-item" *ngFor= "let product of products">
+        <li class="list-group-item" *ngFor= "let product of products | filter: filterText">
             <button type="button" class="btn btn-sm btn-primary" style="float: right;" (click)="addToCart(product)">
                 Sepete ekle
             </button>
-           <h5><b> {{product.ProductName}}</b></h5>
+           <h5><b> {{product.ProductName | uppercase}}</b></h5>
            <p>{{product.QuantityPerUnit}}</p>
-           <p>{{product.UnitPrice}}</p>
+           <p>{{product.UnitPrice | currency : '₺'}}</p>
+           <span>
+               <b>KDV'li tutar:</b>
+               <!-- pipelar arguman alabildikleri için kdv ye değer verebilirdik. örneğin -> kdv:100 -->
+               ({{product.UnitPrice | kdv | currency : '₺'}})
+           </span>
         </li>
     </ul>
 </div>

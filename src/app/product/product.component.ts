@@ -12,6 +12,7 @@ import { Product } from './models/product';
 export class ProductComponent implements OnInit {
   products: Array<Product> = new Array<Product>();
   addedProduct: string = '';
+  filterText: string = '';
 
   constructor(
     private productService: ProductService,
